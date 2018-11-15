@@ -14,7 +14,7 @@ from keras import backend as be
 
 seq = Sequential()
 seq.add(ConvLSTM2D(filters=40, kernel_size=(1,1),
-                   input_shape=(None, 100, 100, 3), #Will need to change channels to 3 for real images
+                   input_shape=(None, 300, 300, 3), #Will need to change channels to 3 for real images
                    padding='same', return_sequences=True,
                    activation='relu'))
 seq.add(BatchNormalization())
@@ -67,10 +67,10 @@ for subdir,dirs,files in os.walk("D:\Documents\cnn_lstm\CNN-LSTM-master"):
         for files in os.walk("D:\Documents\cnn_lstm\CNN-LSTM-master"+'\\'+ str(dir)):
             for i in range(len(files[2])):
                 img_path = "D:\Documents\cnn_lstm\CNN-LSTM-master"+'\\'+ str(dir) + '\\' + str(files[2][i])
-                img = load_img(img_path, target_size=(100,100))
+                img = load_img(img_path, target_size=(300,300))
                 x = img_to_array(img)
                 #print(x)
-                x = x //255       #change it acoording to the values after converting image to array
+                x = x //180      #change it acoording to the values after converting image to array
                
                 movies_input_delayed.append(x)
         movies_input.append(movies_input_delayed[:-1])
