@@ -97,7 +97,7 @@ print(np.array(movies_input_shifted).shape[4])
 
 
 seq.fit(np.array(movies_input), np.array(movies_input_shifted), batch_size=1,
-        epochs=3)
+        epochs=300)
 
 
 track = np.array(movies_input)[0][:15, ::, ::, ::] 
